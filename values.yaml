@@ -13,7 +13,7 @@ ingress:
       paths:
       - path: /
         backend:
-          serviceName: kibana
+          serviceName: RELEASE_NAME_TO_CHANGE-kibana
           servicePort: 443
 
 #dependencies
@@ -26,9 +26,9 @@ elasticsearch:
       enabled: false
 kibana:
   env:
-    ELASTICSEARCH_HOSTS: http://elasticsearch-client:9200
+    ELASTICSEARCH_HOSTS: http://RELEASE_NAME_TO_CHANGE-elasticsearch-client:9200
 fluent-bit:
   backend:
     es:
-      host: elasticsearch-client
+      host: RELEASE_NAME_TO_CHANGE-elasticsearch-client
       port: 9200
