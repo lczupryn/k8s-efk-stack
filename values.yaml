@@ -26,8 +26,7 @@ elasticsearch:
       enabled: false
 kibana:
   env:
-  - name: ELASTICSEARCH_HOSTS
-    value: http://elasticsearch-client:9200
+    ELASTICSEARCH_HOSTS: http://elasticsearch-client:9200
 fluent-bit:
   backend:
     es:
