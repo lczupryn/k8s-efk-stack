@@ -18,5 +18,7 @@ echo "URL_EXPOSED=$URL_EXPOSED"
 #Replace RELEASE_NAME_TO_CHANGE
 sed -i -e "s/RELEASE_NAME_TO_CHANGE/$RELEASE_NAME/" values.yaml
 
+#helm update dependecies
+helm dep update
 #install helm chart
 helm install --name $RELEASE_NAME . --set ingress.hosts.host=$URL_EXPOSED --namespace $NAMESPACE
