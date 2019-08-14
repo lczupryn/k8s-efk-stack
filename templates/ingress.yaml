@@ -14,7 +14,7 @@ spec:
       http:
         paths:
         {{- range .paths }}
-          - path: {{ . }}
+          - path: {{ .path }}
             backend:
               serviceName: {{ .backend.serviceName }}
               servicePort: {{ .backend.servicePort }}

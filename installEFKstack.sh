@@ -10,12 +10,13 @@ else
     export NAMESPACE=$2
 fi
 export RELEASE_NAME=$1
+export URL_EXPOSED=kibana.$RELEASE_NAME.$(kubectl get services -l component=controller,app=nginx-ingress --all-namespaces -o jsonpath="{.items[0].status.loadBalancer.ingress[0].ip}").nip.io
 
 echo "RELEASE_NAME=$RELEASE_NAME"
 echo "NAMESPACE=$NAMESPACE"
-
+echo "URL_EXPOSED=$URL_EXPOSED"
 #Replace RELEASE_NAME_TO_CHANGE
 sed -i -e "s/RELEASE_NAME_TO_CHANGE/$RELEASE_NAME/" values.yaml
 
 #install helm chart
-helm install --name $RELEASE_NAME . --namespace $NAMESPACE
+helm install --name $RELEASE_NAME . --set ingress.hosts.host=$URL_EXPOSED --namespace $NAMESPACE
