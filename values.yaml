@@ -28,6 +28,7 @@ kibana:
     ELASTICSEARCH_HOSTS: http://RELEASE_NAME_TO_CHANGE-elasticsearch-client:9200
 fluent-bit:
   backend:
+    type: es
     es:
       host: RELEASE_NAME_TO_CHANGE-elasticsearch-client
       port: 9200
