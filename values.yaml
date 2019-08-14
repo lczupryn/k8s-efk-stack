@@ -8,13 +8,12 @@ ingress:
   annotations:
     fabric8.io/expose: "true"
     fabric8.io/ingress.annotations: 'kubernetes.io/ingress.class: nginx'
-  hosts:
-    - host: {}
-      paths:
-      - path: /
-        backend:
-          serviceName: RELEASE_NAME_TO_CHANGE-kibana
-          servicePort: 443
+  host: {}
+    paths:
+    - path: /
+      backend:
+        serviceName: RELEASE_NAME_TO_CHANGE-kibana
+        servicePort: 443
 
 #dependencies
 elasticsearch:
