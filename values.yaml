@@ -32,3 +32,17 @@ fluent-bit:
     es:
       host: RELEASE_NAME_TO_CHANGE-elasticsearch-client
       port: 9200
+  parsers:
+    regex:
+    - name: nginx
+      regex: '^(?<remote>[^ ]*) (?<host>[^ ]*) (?<user>[^ ]*) \[(?<time>[^\]]*)\] "(?<method>\S+)(?: +(?<path>[^\"]*?)(?: +\S*)?)?" (?<code>[^ ]*) (?<size>[^ ]*)(?: "(?<referer>[^\"]*)" "(?<agent>[^\"]*)")?$'
+      timeKey: time
+      timeFormat: '%d/%b/%Y:%H:%M:%S %z'
+    - name: syslog
+      regex: '^\<(?<pri>[0-9]+)\>(?<time>[^ ]* {1,2}[^ ]* [^ ]*) (?<host>[^ ]*) (?<ident>[a-zA-Z0-9_\/\.\-]*)(?:\[(?<pid>[0-9]+)\])?(?:[^\:]*\:)? *(?<message>.*)$'
+      timeKey: time
+      timeFormat: '%b %d %H:%M:%S'
+    json:
+    - name: docker
+      timeKey: time
+      timeFormat: '%d/%b/%Y:%H:%M:%S %z'
