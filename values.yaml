@@ -32,6 +32,7 @@ fluent-bit:
     es:
       host: RELEASE_NAME_TO_CHANGE-elasticsearch-client
       port: 9200
+      time_key: '@ts'
   parsers:
     regex:
     - name: nginx
